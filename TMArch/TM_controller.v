@@ -60,7 +60,6 @@ always @(state) begin
 
     case(state)
         S0: begin
-            reset_all = 1'b1;
             compare_states_ctrl = 1'b1;
             clause_out_ctrl = 1'b1;
             class_sum_ctrl = 1'b1;
@@ -69,7 +68,6 @@ always @(state) begin
             done_flag = 1'b0;
         end
         S1: begin
-            reset_all = 1'b0; 
             compare_states_ctrl = 1'b0;
             clause_out_ctrl = 1'b1;
         end

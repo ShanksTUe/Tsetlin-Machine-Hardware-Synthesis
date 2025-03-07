@@ -7,7 +7,6 @@ module TM_Classifier #(
 )(
     input clk,
     input rst_flag,
-    input stop_flag,
     output signed [31:0] class_sum_1,
     output signed [31:0] class_sum_2,
     output signed [31:0] class_sum_3,
@@ -73,7 +72,7 @@ wire [ROM_DATA_WIDTH-1:0] rom_data_xin;    //Data from XIN_MEM_ROM
 
 
 // Instantiate X_IN_ROM
-ROM_XIN_6 #(
+ROM_XIN_3 #(
     .DATA_WIDTH(ROM_DATA_WIDTH),
     .ADDR_WIDTH(ROM_ADDR_WIDTH_XIN),
     .ROM_DEPTH(ROM_DEPTH_XIN)

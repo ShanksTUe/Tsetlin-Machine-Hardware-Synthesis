@@ -38,7 +38,7 @@ compare_states #(
     .FILTER(FILTER)
 ) COMPARE_STATES_1(
     .clk(clk),
-    .rst_flag(reset_all),
+    .rst_flag(rst_flag),
     .stop_flag(stop_compare_states),
     .ta_state(ta_state),
     .xin(xin),
@@ -53,7 +53,7 @@ clause_output #(
     .CLAUSE_CHUNKS(CLAUSE_CHUNKS)
 ) CLAUSE_OUT_CALC_1(
     .clk(clk),
-    .rst_flag(reset_all),
+    .rst_flag(rst_flag),
     .stop_flag(stop_clause_out),
     .CMP_OUT_Reg(CMP_OUT_Reg),
     .clause_chunk(clause_chunk_id),
@@ -66,7 +66,7 @@ clause_out_regbank #(
     .REG_WIDTH(INT_SIZE)
 ) CLAUSE_OUT_MEM_1(
     .clk(clk),
-    .rst_flag(reset_all),
+    .rst_flag(rst_flag),
     .stop_flag_1(stop_clause_out),
     .stop_flag_2(stop_class_sum),
     .clause_chunk(clause_chunk_id),
@@ -81,7 +81,7 @@ clause_out_regbank #(
 class_sum SUM_CALC_1(
     .clk(clk),
     .stop_flag(stop_class_sum),
-    .rst_flag(reset_all),
+    .rst_flag(rst_flag),
     .clause_output(clause_chunk_data),
     .class_sum(class_sum)
 );
@@ -89,7 +89,7 @@ class_sum SUM_CALC_1(
 //Instantiate the class_sum_th for thresholding the class sum
 class_sum_th SUM_THRESHOLD_1 (
     .clk(clk),
-    .rst_flag(reset_all),
+    .rst_flag(rst_flag),
     .stop_flag(stop_class_sum_th),
     .class_sum_in(class_sum),
     .class_sum_out(class_sum_thrd)
@@ -101,7 +101,7 @@ clause_counter #(
 ) COUNT(
     .clk(clk),
     .stop_flag(stop_class_sum),
-    .rst_flag(reset_all),
+    .rst_flag(rst_flag),
     .count(clause_chunk_count)
 );
 

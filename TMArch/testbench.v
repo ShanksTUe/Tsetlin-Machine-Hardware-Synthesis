@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module TM_pipeline_tb;
+module TM_Classifier_tb;
 
     // Parameters
     parameter CLAUSES = 2000;
@@ -37,7 +37,6 @@ module TM_pipeline_tb;
     ) DUT (
         .clk(clk),
         .rst_flag(rst_flag),
-        .stop_flag(stop_flag),
         .class_sum_1(class_sum_1),
         .class_sum_2(class_sum_2),
         .class_sum_3(class_sum_3),
@@ -59,9 +58,12 @@ module TM_pipeline_tb;
 
     // Test procedure
     initial begin
+
+        //Read the input memory data
+        $readmemb("D:\\Internship\\verilog\\TM_states\\input_number_3.mem", DUT.XIN_MEM_ROM.rom);
+  
         // Initialize signals
         rst_flag = 1;
-        stop_flag = 0;
 
         // Apply reset
         #20 rst_flag = 0;
@@ -82,7 +84,6 @@ module TM_pipeline_tb;
           $time, class_sum_1, class_sum_2, class_sum_3, class_sum_4, class_sum_5, class_sum_6, class_sum_7, class_sum_8, class_sum_9, class_sum_10);
         
         #10 rst_flag = 1;
-        stop_flag = 1;
         // End simulation
         $finish;
     end

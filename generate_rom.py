@@ -2,9 +2,9 @@
 
 # Parameters
 DATA_WIDTH = 32  # Bit-width of each entry
-ADDR_WIDTH = 17  # Address width (2^ADDR_WIDTH = number of entries)
-ROM_DEPTH = 2**ADDR_WIDTH - 33072  # Number of entries (1024 for ADDR_WIDTH = 10)
-MEM_FILE = "TM_states\\input_number_2.mem"  # Input file containing binary ROM values
+ADDR_WIDTH = 6  # Address width (2^ADDR_WIDTH = number of entries)
+ROM_DEPTH = 2**ADDR_WIDTH - 15  # Number of entries (1024 for ADDR_WIDTH = 10)
+MEM_FILE = "TM_states\\input_number_3.mem"  # Input file containing binary ROM values
 OUTPUT_FILE = "rom_always_block_in.v"  # Output Verilog file
 
 
@@ -55,14 +55,14 @@ def generate_always_block(data, output_file):
 if __name__ == "__main__":
     # Read ROM values from .mem file
 
-    for file_num in range(1, 11):
+    # for file_num in range(1, 11):
 
-        rom_data = read_mem_file(f"TM_states\\ta_state_final_{file_num}.mem")
+    #     rom_data = read_mem_file(f"TM_states\\ta_state_final_{file_num}.mem")
 
-        # Generate the always block
-        generate_always_block(rom_data, f"rom_always_block_{file_num}.v")
-        print(f"Always block generated and saved to rom_always_block_{file_num}.v")
+    #     # Generate the always block
+    #     generate_always_block(rom_data, f"rom_always_block_{file_num}.v")
+    #     print(f"Always block generated and saved to rom_always_block_{file_num}.v")
 
-    # rom_data = read_mem_file(MEM_FILE)
-    # generate_always_block(rom_data, OUTPUT_FILE)
-    # print(f"Always block generated and saved to {OUTPUT_FILE}")
+    rom_data = read_mem_file(MEM_FILE)
+    generate_always_block(rom_data, OUTPUT_FILE)
+    print(f"Always block generated and saved to {OUTPUT_FILE}")

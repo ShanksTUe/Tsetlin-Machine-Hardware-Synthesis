@@ -16,7 +16,7 @@ module class_sum (
     wire [5:0] odd_count;
     wire [5:0] even_count;
 
-    // Bitwise AND operations
+
     assign odd_bits  = clause_output & MASK_ODD;  // Extract odd-positioned bits
     assign even_bits = clause_output & MASK_EVEN; // Extract even-positioned bits
 
